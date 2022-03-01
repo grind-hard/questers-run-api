@@ -2,7 +2,7 @@ import { isNullOrUndefined, loggerWithDefaults } from 'nhs-core-utils'
 import { AzureFunction, Context, HttpRequest } from '@azure/functions'
 import { HttpResponseBase } from '../common/response.interfaces'
 import { DefaultUsersController } from './users.controller'
-import { EnVar } from '../../../common/constants'
+import { EnVar } from '../../common/constants'
 
 const logger = loggerWithDefaults()
 

@@ -1,5 +1,5 @@
 import { LegacyTableRow } from 'azure-utils'
-import { User } from '../../../interfaces/entities/user'
+import { User } from '../../interfaces/entities/user'
 import { HttpResponseBodyBase } from '../common/response.interfaces'
 
 export interface UsersHttpResponseBody extends HttpResponseBodyBase {
