@@ -1,11 +1,7 @@
 import { User } from "../../../interfaces/entities/user"
+import { HttpResponseBodyBase } from "../common/response.interfaces"
 
-export interface UsersHttpRespone {
-	statusCode: number
-	body: UsersHttpResponseBody
-}
-
-export interface UsersHttpResponseBody {
+export interface UsersHttpResponseBody extends HttpResponseBodyBase {
 	success: boolean
 	messages: string[]
 	users: User[]

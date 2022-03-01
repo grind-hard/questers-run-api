@@ -1,4 +1,6 @@
 export interface ControllerBase<T> {
 	doPost(filters: any): Promise<T[]>
-	doGet()
+	doGet(): Promise<T[]>
+	doPut(object: T): Promise<T>
+	doPatch(object: T): Promise<T>
 }

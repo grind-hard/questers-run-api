@@ -1,4 +1,4 @@
-import { Effects } from '../common'
+import { Effects } from './effects'
 import { EntityBase } from './entites.base'
 
 export interface Weapon extends EntityBase {

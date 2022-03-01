@@ -1,6 +1,6 @@
 import { AzureFunctionSchema } from 'ts-func'
 
-export const universe: AzureFunctionSchema = {
+export const users: AzureFunctionSchema = {
   bindings: [
     {
       name: 'usersRequest',
