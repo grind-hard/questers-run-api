@@ -64,7 +64,7 @@ export class DefaultUsersController implements ControllerBase<User> {
   private async execute (object: User, writeType: TableOperation): Promise<User> {
     const dataPath = `${object.id}.json`
 
-    if(writeType === 'delete'){
+    if (writeType === 'delete') {
       await this.blockBlobService.delete(Containers.Users, dataPath)
     } else {
       await this.blockBlobService.write(Containers.Users, dataPath, object)

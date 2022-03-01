@@ -3,6 +3,8 @@ import { AzureFunction, Context, HttpRequest } from '@azure/functions'
 import { HttpResponseBase } from '../common/response.interfaces'
 import { DefaultUsersController } from './users.controller'
 import { EnVar } from '../../common/constants'
+import { User } from '../../interfaces/entities/user'
+import { validatePutRequest } from './users.service'
 
 const logger = loggerWithDefaults()
 
@@ -10,13 +12,15 @@ const logger = loggerWithDefaults()
 const usersHttp: AzureFunction = logger.azureFunctionHandler(async function usersHttp (
   context: Context,
   request: HttpRequest
-): Promise<HttpResponseBase> {
+): Promise<{response: HttpResponseBase}> {
   if (isNullOrUndefined(request) || isNullOrUndefined(request.body)) {
     return {
-      statusCode: 400,
-      body: {
-        success: false,
-        messages: ['Required request not provided.']
+      response: {
+        statusCode: 400,
+        body: {
+          success: false,
+          messages: ['Required request not provided.']
+        }
       }
     }
   }
@@ -30,8 +34,30 @@ const usersHttp: AzureFunction = logger.azureFunctionHandler(async function user
     // A. Get All User Records
     throw new Error('Method not implemented.')
   } else if (request.method === 'PUT') {
-    // A. Create User Record
-    controller.doPut(request.body)
+    const validatedRequest: string[] = validatePutRequest(request.body)
+    if (validatedRequest.length > 0) {
+      return {
+        response: {
+          statusCode: 400,
+          body: {
+            success: false,
+            messages: validatedRequest
+          }
+        }
+      }
+    }
+
+    const user: User = await controller.doPut(request.body)
+
+    return {
+      response: {
+        statusCode: 201,
+        body: {
+          success: true,
+          messages: [user.id]
+        }
+      }
+    }
   } else if (request.method === 'PATCH') {
     // A. Update a User's Record
     throw new Error('Method not implemented.')
@@ -40,10 +66,12 @@ const usersHttp: AzureFunction = logger.azureFunctionHandler(async function user
     throw new Error('Method not implemented.')
   } else {
     return {
-      statusCode: 400,
-      body: {
-        success: false,
-        messages: ['Invalid method provided.']
+      response: {
+        statusCode: 400,
+        body: {
+          success: false,
+          messages: ['Invalid method provided.']
+        }
       }
     }
   }
