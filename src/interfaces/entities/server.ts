@@ -4,4 +4,5 @@ export interface Server extends EntityBase {
   qrId: string
   ip: string
   port: string
+  adminIds: string[]
 }

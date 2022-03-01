@@ -1,5 +1,5 @@
-export class UsersControllerService {
-	async hashUsersPassword(password: string): Promise<string> {
-		return 
-	}
+// import * as crypto from 'crypto'
+
+export function hashPassword (password: string): string {
+  throw new Error('Not Implemented')
 }

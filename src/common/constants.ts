@@ -7,5 +7,6 @@ export enum Containers {
 }
 
 export enum EnVar {
-  StorageAccount = 'STORAGE_ACCOUNT'
+  StorageAccount = 'STORAGE_ACCOUNT',
+  Pepper = 'PEPPER'
 }
