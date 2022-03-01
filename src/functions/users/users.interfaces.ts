@@ -13,8 +13,8 @@ export interface UsersHttpResponseBody extends HttpResponseBodyBase {
  * RowKey: ${user.id}
  */
 export interface UsersTableRow extends Readonly<LegacyTableRow> {
-  passwordHash: string
-  salt: string
+  passwordHash?: string
+  salt?: string
   dataPath: string
 }
 

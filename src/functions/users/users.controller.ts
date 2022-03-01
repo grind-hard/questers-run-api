@@ -75,7 +75,7 @@ export class DefaultUsersController implements ControllerBase<User> {
       RowKey: object.id,
       salt: object.salt,
       dataPath: dataPath,
-      passwordHash: hashPassword(object.password)
+      passwordHash: object.password
     }
 
     this.tableWriterBatch = new TableWriterBatch({ connection: process.env[EnVar.StorageAccount] })
