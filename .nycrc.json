@@ -1,0 +1,14 @@
+{
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "all": true,
+    "include": ["**/**.test.ts"],
+    "exclude": [
+        "test/**.ts",
+        "test/**/**.ts",
+        "src/**/bindings.ts",
+        "gulpfile.ts"
+    ],
+    "require": ["source-map-support/register"],
+    "check-coverage": false,
+    "reporter": "lcov"
+}

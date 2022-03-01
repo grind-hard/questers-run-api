@@ -1,0 +1,43 @@
+{
+  "name": "questers-run",
+  "version": "0.0.1",
+  "description": "Objectifying Story Content",
+  "scripts": {
+    "test": "gulp coverage",
+    "demo": "gulp tsc && node dist/src/demo/index.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@types/luxon": "^1.27.1",
+    "@types/uuid": "^8.3.1",
+    "azure-table-promise": "^1.2.0",
+    "azure-utils": "^2.7.0",
+    "luxon": "^2.0.1",
+    "nhs-core-utils": "^0.0.13-RELEASE",
+    "request-it-client": "^1.4.1",
+    "storage-table-document": "^1.5.0",
+    "typescript-node": "^0.1.3",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@azure/functions": "^1.2.3",
+    "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@types/gulp": "^4.0.9",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.11.7",
+    "@types/sinon": "^10.0.2",
+    "gulp": "^4.0.2",
+    "mocha": "^8.3.2",
+    "nyc": "^15.1.0",
+    "sinon": "^11.1.2",
+    "source-map-support": "^0.5.19",
+    "ts-func": "^0.1.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  },
+  "standard": {
+    "env": {
+      "mocha": true
+    }
+  }
+}
