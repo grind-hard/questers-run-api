@@ -1,16 +1,10 @@
-import { Effects } from '../common'
+import { EntityBase } from './entites.base'
 
-export interface SkillCategory {
-  id: string
-  title: string
-  description: string
+export interface SkillCategory extends EntityBase {
   classRestrictionIds?: string[]
 }
 
-export interface Skill {
-  id: string
+export interface Skill extends EntityBase {
   skillCategoryId: string
-  title: string
-  description: string
   effectIds: string[]
 }

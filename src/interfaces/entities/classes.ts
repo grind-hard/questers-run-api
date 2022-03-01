@@ -1,8 +1,5 @@
-import { Skill } from './skills'
+import { EntityBase } from './entites.base'
 
-export interface Class {
-  id: string
-  title: string
-  description: string
+export interface Classes extends EntityBase {
   skillIds?: string[]
 }

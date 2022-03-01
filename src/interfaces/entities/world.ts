@@ -1,7 +1,5 @@
-import { RelativeWorld } from '../relations'
+import { EntityBase } from './entites.base'
 
-export interface World extends RelativeWorld {
-  name: string
-  characerIds: string[]
-  maxCharacterAmount: number
+export interface World extends EntityBase {
+
 }

@@ -1,8 +1,6 @@
+import { EntityBase } from './entites.base'
 
-export interface Armor {
-  id: string
-  title: string
-  descripton: string
+export interface Armor extends EntityBase {
   value: number
   durability: number
   levelRequirement: number
@@ -11,14 +9,10 @@ export interface Armor {
   slot: SlotTypeClassification
 }
 
-export interface ArmorTypeClassification {
-  id: string
-  title: string
-  description: string
+export interface ArmorTypeClassification extends EntityBase {
+
 }
 
-export interface SlotTypeClassification {
-  id: string
-  title: string
-  description: string
+export interface SlotTypeClassification extends EntityBase {
+
 }

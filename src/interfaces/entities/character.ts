@@ -1,3 +1,5 @@
+import { EntityBase } from './entites.base'
+
 export interface Character {
   id: string
   userId: string
@@ -12,15 +14,11 @@ export interface Character {
   statsId: string
 }
 
-export interface Gender {
-  id: string
-  title: string
-  description: string
+export interface Gender extends EntityBase {
+
 }
 
-export interface Equipment {
-  id: string
-  description: string
+export interface Equipment extends EntityBase {
   armorIds: string[]
   weaponIds: string[]
 }
