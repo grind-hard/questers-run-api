@@ -1,6 +1,6 @@
 {
   "name": "questers-run",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Objectifying Story Content",
   "scripts": {
     "test": "gulp coverage",
