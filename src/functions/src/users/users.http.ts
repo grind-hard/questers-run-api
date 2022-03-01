@@ -4,7 +4,7 @@ import { HttpResponseBase } from "../common/response.interfaces";
 
 const logger = loggerWithDefaults()
 
-const userHttp: AzureFunction = logger.azureFunctionHandler(async function userHttp(
+const usersHttp: AzureFunction = logger.azureFunctionHandler(async function usersHttp(
 	context: Context,
 	request: HttpRequest
 ): Promise<HttpResponseBase> {
@@ -32,4 +32,4 @@ const userHttp: AzureFunction = logger.azureFunctionHandler(async function userH
 	}
 })
 
-export default userHttp
+export default usersHttp
