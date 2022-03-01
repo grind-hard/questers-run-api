@@ -3,11 +3,11 @@ import { AzureFunctionSchema } from 'ts-func'
 export const universe: AzureFunctionSchema = {
   bindings: [
     {
-      name: 'universeEndPoint',
+      name: 'usersRequest',
       type: 'httpTrigger',
       direction: 'in',
-      methods: ['get', 'post']
+      methods: ['get', 'post', 'delete', 'put', 'patch']
     }
   ],
-  scriptFile: '../dist/src/universe/universe.js'
+  scriptFile: '../dist/src/functions/src/users/users.http.js'
 }

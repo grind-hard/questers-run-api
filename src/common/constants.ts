@@ -1,3 +1,11 @@
 export enum Tables {
-  Character = 'character'
+  Users = 'users'
+}
+
+export enum Containers {
+  Users = 'users'
+}
+
+export enum EnVar {
+  StorageAccount = 'STORAGE_ACCOUNT'
 }
