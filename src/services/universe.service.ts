@@ -1,6 +1,6 @@
 import { Universe } from '../interfaces/entities/universe'
-import { BaseCoreEntity } from './service.base'
+import { DefaultEntityService } from './service.base'
 
-export class UniverseService extends BaseCoreEntity<Universe> {
+export class UniverseService extends DefaultEntityService<Universe> {
 
 }

@@ -2,7 +2,7 @@ import { EntityBase } from './entites.base'
 /**
  * The Stat is like a character sheet that can be saved.
  */
-export interface Stat extends EntityBase {
+export interface Stats extends EntityBase {
   strength?: number
   agility?: number
   courage?: number

@@ -1,6 +1,6 @@
 import { User } from '../interfaces/entities/user'
-import { BaseCoreEntity } from './service.base'
+import { DefaultEntityService } from './service.base'
 
-export class UserService extends BaseCoreEntity<User> {
+export class UserService extends DefaultEntityService<User> {
 
 }

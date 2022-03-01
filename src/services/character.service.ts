@@ -1,7 +1,7 @@
-import { Tables } from '../common/entites'
+import { Tables } from '../common/constants'
 import { Character } from '../interfaces/entities/character'
-import { BaseCoreEntity } from './service.base'
+import { DefaultEntityService } from './service.base'
 
-export class CharacterService extends BaseCoreEntity<Character> {
+export class CharacterService extends DefaultEntityService<Character> {
   constructor () { super(Tables.Character) }
 }
