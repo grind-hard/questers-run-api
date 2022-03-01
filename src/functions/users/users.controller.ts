@@ -1,5 +1,5 @@
 import { azure, createPromiseTableService } from 'azure-table-promise'
-import { BlockBlobService, TableWriterBatch } from 'azure-utils'
+import { BlockBlobService, TableOperation, TableWriterBatch } from 'azure-utils'
 import { isNullOrUndefined } from 'nhs-core-utils'
 import { v3, v4 } from 'uuid'
 import { Containers, EnVar, Tables } from '../../common/constants'
@@ -24,20 +24,19 @@ export class DefaultUsersController implements ControllerBase<User> {
     throw new Error('Method not implemented.')
   }
 
-  /** Pepper the password at this point as it should have been hashed on the client end. */
   async doPut (object: User): Promise<User> {
     object.id = v3(object.username, 'user')
     object.password = v3(object.password, process.env[EnVar.Pepper])
-    return await this.upsert(object)
+    return await this.execute(object, 'merge')
   }
 
-  async doPatch (object: User): Promise<User> {
-    return await this.upsert(object)
+  async doPatch (object: User, replace?: boolean): Promise<User> {
+    return await this.execute(object, 'merge')
   }
 
   async doDelete (object: User): Promise<{success: boolean, messages: string[]}> {
     const promiseTableService = createPromiseTableService(process.env[EnVar.StorageAccount])
-    const query = new azure.TableQuery().select().where('id eq ?', object.id)
+    const query = new azure.TableQuery().select().where('RowKey eq ?', object.id)
     const results = await promiseTableService.queryEntitiesAll<UsersTableRow>(Tables.Users, query, { resolveEntity: true })
     const records: UsersTableRow[] = results.entries
 
@@ -48,17 +47,7 @@ export class DefaultUsersController implements ControllerBase<User> {
       }
     }
 
-    const deleteRow: UsersTableRow = records.find(o => o.RowKey === object.id)
-    this.tableWriterBatch = new TableWriterBatch({ connection: process.env[EnVar.StorageAccount] })
-    this.tableWriterBatch.addTableWriter({
-      tableName: Tables.Users,
-      tableRows: [deleteRow],
-      writeType: 'delete'
-    })
-    await this.tableWriterBatch.executeBatches()
-
-    const blobFileName = `${deleteRow.RowKey}.json`
-    await this.blockBlobService.delete(Containers.Users, blobFileName)
+    await this.execute(object, 'delete')
 
     return {
       success: true,
@@ -72,9 +61,14 @@ export class DefaultUsersController implements ControllerBase<User> {
     throw new Error('Method not implemented.')
   }
 
-  private async upsert (object: User): Promise<User> {
+  private async execute (object: User, writeType: TableOperation): Promise<User> {
     const dataPath = `${object.id}.json`
-    await this.blockBlobService.write(Containers.Users, dataPath, object)
+
+    if(writeType === 'delete'){
+      await this.blockBlobService.delete(Containers.Users, dataPath)
+    } else {
+      await this.blockBlobService.write(Containers.Users, dataPath, object)
+    }
 
     const userTableRow: UsersTableRow = {
       PartitionKey: 'users',
@@ -87,7 +81,8 @@ export class DefaultUsersController implements ControllerBase<User> {
     this.tableWriterBatch = new TableWriterBatch({ connection: process.env[EnVar.StorageAccount] })
     this.tableWriterBatch.addTableWriter({
       tableName: Tables.Users,
-      tableRows: [userTableRow]
+      tableRows: [userTableRow],
+      writeType
     })
     await this.tableWriterBatch.executeBatches()
 
