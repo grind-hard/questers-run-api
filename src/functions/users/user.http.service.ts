@@ -41,7 +41,7 @@ export function validatePutRequest (requestBody: any): string[] {
 }
 
 // https://stackoverflow.com/questions/60737672/email-regex-pattern-in-nodejs
-export function isEmail (email: string) {
+export function isEmail (email: string): boolean {
   const emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
   if (email !== '' && (email.match(emailFormat) != null)) {
     return true

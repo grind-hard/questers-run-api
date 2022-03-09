@@ -37,23 +37,5 @@ describe('Users', () => {
       const result = await usersHttp.default({} as any, { body: { }, method: '' })
       strictEqual(result.response.statusCode, 400)
     })
-
-    const test = [
-      { request: { body: undefined }, expected: 400 },
-      { request: { body: [] }, expected: 400 },
-      { request: { body: { username: 'user' } }, expected: 400 },
-      { request: { body: { username: undefined, password: 'password', email: 'email' } }, expected: 400 },
-      { request: { body: { username: 'user', password: undefined, email: 'email@test.com' } }, expected: 400 },
-      { request: { body: { username: 'user', password: 'password', email: undefined } }, expected: 400 },
-      { request: { body: { username: 'user', password: 'password', email: 'email@test.com' } }, expected: 201 }
-    ]
-
-    it('should make validate put requests for required fields', async () => {
-      for (const data of test) {
-        putStub.returns(data.request.body)
-        const result = await usersHttp.default({} as any, { body: data.request.body, method: 'PUT' })
-        strictEqual(result.response.statusCode, data.expected)
-      }
-    })
   })
 })
