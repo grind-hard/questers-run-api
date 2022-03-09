@@ -1,13 +1,21 @@
+import { BinaryToTextEncoding, createHash } from 'crypto'
 import { isNullOrUndefined } from 'nhs-core-utils'
+import { EnVar } from '../../common/common.statics'
 import { User } from '../../interfaces/entities/user'
 
-// import * as crypto from 'crypto'
-export function hashPassword (password: string): string {
-  throw new Error('Method not implemented.')
+export function hashValue (value: any): string {
+  return createHash(process.env[EnVar.Algorithm]).update(`${value}${process.env[EnVar.Pepper]}`).digest(process.env[EnVar.Digest] as BinaryToTextEncoding)
 }
 
-export function validatePutRequest (requestBody: User): string[] {
+export function validatePutRequest (requestBody: any): string[] {
   const errors: string[] = []
+
+  try{
+    requestBody = JSON.parse(requestBody)
+  } catch(error){
+    errors.push('Failed to parse JSON.')
+    return errors
+  }
 
   if (isNullOrUndefined(requestBody) || typeof requestBody !== 'object') {
     errors.push('Request body is invalid.')

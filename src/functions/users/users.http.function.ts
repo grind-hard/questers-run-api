@@ -1,10 +1,10 @@
-import { isNullOrUndefined, loggerWithDefaults } from 'nhs-core-utils'
+import { isNotNullAndNotUndefined, isNullOrUndefined, loggerWithDefaults } from 'nhs-core-utils'
 import { AzureFunction, Context, HttpRequest } from '@azure/functions'
 import { HttpResponseBase } from '../common/response.interfaces'
-import { DefaultUsersController } from './users.controller'
-import { EnVar } from '../../common/constants'
+import { DefaultUsersController } from './users.http.controller'
+import { EnVar } from '../../common/common.statics'
 import { User } from '../../interfaces/entities/user'
-import { validatePutRequest } from './users.service'
+import { validatePutRequest } from './users.http.service'
 
 const logger = loggerWithDefaults()
 
@@ -29,16 +29,32 @@ const usersHttp: AzureFunction = logger.azureFunctionHandler(async function user
   if (request.method === 'POST') {
     // A. Check Client Credentials
     // B. Get Users by Field Name and Value
-    throw new Error('Method not implemented.')
+    return {
+      response: {
+        statusCode: 501,
+        body: {
+          success: false,
+          messages: ['Notify a dev.']
+        }
+      }
+    }
   } else if (request.method === 'GET') {
-    // A. Get All User Records
-    throw new Error('Method not implemented.')
+    // A. Get All/Filtered User Records
+    return {
+      response: {
+        statusCode: 501,
+        body: {
+          success: false,
+          messages: ['Notify a dev.']
+        }
+      }
+    }
   } else if (request.method === 'PUT') {
     const validatedRequest: string[] = validatePutRequest(request.body)
     if (validatedRequest.length > 0) {
       return {
         response: {
-          statusCode: 400,
+          statusCode: 412,
           body: {
             success: false,
             messages: validatedRequest
@@ -48,22 +64,49 @@ const usersHttp: AzureFunction = logger.azureFunctionHandler(async function user
     }
 
     const user: User = await controller.doPut(request.body)
-
-    return {
-      response: {
-        statusCode: 201,
-        body: {
-          success: true,
-          messages: [user.id]
+    if(isNotNullAndNotUndefined(user)){
+      return {
+        response: {
+          statusCode: 201,
+          body: {
+            success: true,
+            messages: [user.id]
+          }
+        }
+      }
+    } else {
+      return {
+        response: {
+          statusCode: 400,
+          body: {
+            success: true,
+            messages: ['Failed to create user.']
+          }
         }
       }
     }
   } else if (request.method === 'PATCH') {
     // A. Update a User's Record
-    throw new Error('Method not implemented.')
+    return {
+      response: {
+        statusCode: 501,
+        body: {
+          success: false,
+          messages: ['Notify a dev.']
+        }
+      }
+    }
   } else if (request.method === 'DELETE') {
     // A. Delete a User's Record
-    throw new Error('Method not implemented.')
+    return {
+      response: {
+        statusCode: 501,
+        body: {
+          success: false,
+          messages: ['Notify a dev.']
+        }
+      }
+    }
   } else {
     return {
       response: {

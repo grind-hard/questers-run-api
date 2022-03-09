@@ -6,4 +6,5 @@ export interface HttpResponseBase {
 export interface HttpResponseBodyBase {
   success: boolean
   messages: string[]
+  content?: any
 }

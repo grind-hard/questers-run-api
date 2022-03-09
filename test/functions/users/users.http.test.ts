@@ -1,10 +1,10 @@
 import { setupEnvironment } from '../../defaults.test'
 import * as sinon from 'sinon'
 import { BlockBlobService, TableWriterBatch } from 'azure-utils'
-import * as usersHttp from '../../../src/functions/users/users.http'
+import * as usersHttp from '../../../src/functions/users/users.http.function'
 import { strictEqual } from 'assert'
 import { PromiseTableService } from 'azure-table-promise'
-import { DefaultUsersController } from '../../../src/functions/users/users.controller'
+import { DefaultUsersController } from '../../../src/functions/users/users.http.controller'
 
 describe('Users', () => {
   describe('Http', () => {
