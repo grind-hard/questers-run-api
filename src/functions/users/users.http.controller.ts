@@ -1,7 +1,7 @@
 import { azure, PromiseTableService } from 'azure-table-promise'
 import { BlockBlobService, TableOperation, TableWriterBatch } from 'azure-utils'
 import { isNotNullAndNotUndefined } from 'nhs-core-utils'
-import { v3 } from 'uuid'
+import { v3, v4 } from 'uuid'
 import { Tables, Containers } from '../../common/azure.entities'
 import { EnVar } from '../../common/common.statics'
 import { User } from '../../interfaces/entities/user'
@@ -31,6 +31,7 @@ export class DefaultUsersController implements ControllerBase<User> {
     if(!this.exists(entity)) return
     entity.id = v3(entity.username, 'user')
     entity.password = hashValue(entity.password)
+    entity.authentication = v4()
     return await this.execute(entity, 'merge')
   }
 

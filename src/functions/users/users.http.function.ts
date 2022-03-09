@@ -87,6 +87,7 @@ const usersHttp: AzureFunction = logger.azureFunctionHandler(async function user
     }
   } else if (request.method === 'PATCH') {
     // A. Update a User's Record
+    // B. Request new authentication token
     return {
       response: {
         statusCode: 501,
