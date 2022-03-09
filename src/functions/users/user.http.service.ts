@@ -2,8 +2,8 @@ import { BinaryToTextEncoding, createHash } from 'crypto'
 import { isNullOrUndefined } from 'nhs-core-utils'
 import { EnVar } from '../../common/common.statics'
 
-export function hashValue (value: any): string {
-  return createHash(process.env[EnVar.Algorithm]).update(`${value}${process.env[EnVar.Pepper]}`).digest(process.env[EnVar.Digest] as BinaryToTextEncoding)
+export function hashValue (value: any, salt: string): string {
+  return createHash(process.env[EnVar.Algorithm]).update(`${salt}${value}${process.env[EnVar.Pepper]}`).digest(process.env[EnVar.Digest] as BinaryToTextEncoding)
 }
 
 export function validatePutRequest (requestBody: any): string[] {

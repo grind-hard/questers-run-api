@@ -1,10 +1,10 @@
 import { setupEnvironment } from '../../defaults.test'
 import * as sinon from 'sinon'
 import { BlockBlobService, TableWriterBatch } from 'azure-utils'
-import * as usersHttp from '../../../src/functions/users/users.http.function'
+import * as usersHttp from '../../../src/functions/users/user.http.function'
 import { strictEqual } from 'assert'
 import { PromiseTableService } from 'azure-table-promise'
-import { DefaultUsersController } from '../../../src/functions/users/users.http.controller'
+import { DefaultUserController } from '../../../src/functions/users/user.http.controller'
 
 describe('Users', () => {
   describe('Http', () => {
@@ -21,7 +21,7 @@ describe('Users', () => {
       writeStub = sinon.stub(BlockBlobService.prototype, 'write')
       deleteStub = sinon.stub(BlockBlobService.prototype, 'delete')
       queryStub = sinon.stub(PromiseTableService.prototype, 'queryEntitiesAll')
-      putStub = sinon.stub(DefaultUsersController.prototype, 'doPut')
+      putStub = sinon.stub(DefaultUserController.prototype, 'doPut')
     })
 
     afterEach(async () => {

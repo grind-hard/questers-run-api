@@ -1,15 +1,13 @@
-import { isNotNullAndNotUndefined, isNullOrUndefined, loggerWithDefaults } from 'nhs-core-utils'
+import { isNotNullAndNotUndefined, isNullOrUndefined } from 'nhs-core-utils'
 import { AzureFunction, Context, HttpRequest } from '@azure/functions'
 import { HttpResponseBase } from '../common/response.interfaces'
-import { DefaultUsersController } from './users.http.controller'
+import { DefaultUserController } from './user.http.controller'
 import { EnVar } from '../../common/common.statics'
 import { User } from '../../interfaces/entities/user'
-import { validatePutRequest } from './users.http.service'
-
-const logger = loggerWithDefaults()
+import { validatePutRequest } from './user.http.service'
 
 /** https://api.questers-run.com/v1/users */
-const usersHttp: AzureFunction = logger.azureFunctionHandler(async function usersHttp (
+const usersHttp: AzureFunction = async function usersHttp (
   context: Context,
   request: HttpRequest
 ): Promise<{response: HttpResponseBase}> {
@@ -25,7 +23,7 @@ const usersHttp: AzureFunction = logger.azureFunctionHandler(async function user
     }
   }
 
-  const controller = new DefaultUsersController(process.env[EnVar.StorageAccount])
+  const controller = new DefaultUserController(process.env[EnVar.StorageAccount])
   if (request.method === 'POST') {
     // A. Check Client Credentials
     // B. Get Users by Field Name and Value
@@ -63,14 +61,14 @@ const usersHttp: AzureFunction = logger.azureFunctionHandler(async function user
       }
     }
 
-    const user: User = await controller.doPut(request.body)
+    const user: User = await controller.doPut(JSON.parse(request.body))
     if(isNotNullAndNotUndefined(user)){
       return {
         response: {
           statusCode: 201,
           body: {
             success: true,
-            messages: [user.id]
+            messages: [{id: user.id, auth: user.authentication}]
           }
         }
       }
@@ -79,7 +77,7 @@ const usersHttp: AzureFunction = logger.azureFunctionHandler(async function user
         response: {
           statusCode: 400,
           body: {
-            success: true,
+            success: false,
             messages: ['Failed to create user.']
           }
         }
@@ -119,6 +117,6 @@ const usersHttp: AzureFunction = logger.azureFunctionHandler(async function user
       }
     }
   }
-})
+}
 
 export default usersHttp

@@ -5,7 +5,9 @@ import { LegacyTableRow } from 'azure-utils'
  * RowKey: ${user.id}
  */
 export interface UsersTableRow extends Readonly<LegacyTableRow> {
-  passwordHash?: string
+  username: string
+  password?: string
   salt?: string
   dataPath: string
+  serverIds?: string[]
 }
