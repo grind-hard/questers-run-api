@@ -1,4 +1,4 @@
-import { EntityBase } from '../entites.base'
+import { EntityBase } from '../entities.base'
 
 export interface Classes extends EntityBase {
   skillIds?: string[]

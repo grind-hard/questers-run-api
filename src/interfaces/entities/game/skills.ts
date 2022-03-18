@@ -1,4 +1,4 @@
-import { EntityBase } from '../entites.base'
+import { EntityBase } from '../entities.base'
 
 export interface SkillCategory extends EntityBase {
   classRestrictionIds?: string[]

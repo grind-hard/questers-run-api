@@ -1,4 +1,4 @@
-import { EntityBase } from '../entites.base'
+import { EntityBase } from '../entities.base'
 import { Points } from './points'
 import { Stats } from './stats'
 

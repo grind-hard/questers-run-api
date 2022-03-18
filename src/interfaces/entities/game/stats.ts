@@ -1,4 +1,4 @@
-import { EntityBase } from '../entites.base'
+import { EntityBase } from '../entities.base'
 /**
  * The Stat is like a character sheet that can be saved.
  */

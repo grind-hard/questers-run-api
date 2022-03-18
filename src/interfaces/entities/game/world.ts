@@ -1,4 +1,4 @@
-import { EntityBase } from '../entites.base'
+import { EntityBase } from '../entities.base'
 
 /** 
  * The World contains all of the gameplay entities. 

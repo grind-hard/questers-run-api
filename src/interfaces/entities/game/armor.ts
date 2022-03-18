@@ -1,4 +1,4 @@
-import { EntityBase } from '../entites.base'
+import { EntityBase } from '../entities.base'
 
 /**
  * Armor is meant for Characters, NPCs, Mobs, and Bosses.

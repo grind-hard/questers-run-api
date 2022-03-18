@@ -1,5 +1,5 @@
 import { Effects } from './effects'
-import { EntityBase } from '../entites.base'
+import { EntityBase } from '../entities.base'
 
 export interface Weapon extends EntityBase {
   weaponTypeId: string
