@@ -24,9 +24,11 @@ export interface Character {
   savedEquipmentIds: string[]
   /** The character's currently assigned equipment identifier. */
   equipmentId: string
-  /** The  */
+  /** The weapon identifiers currently equipped to the character. */
   weaponIds: string[]
+  /** The stats identifier associated with the character. */
   statsId: string
+  /** The points associated to the character such as health, mana, stamina, etc... */
   points: Points
   titleId?: string
 }

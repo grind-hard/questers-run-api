@@ -1,5 +1,5 @@
-export interface Points {
-  hp: number
-  mana: number
-  stamina: number
+import { EntityBase } from '../entities.base'
+
+export interface Points extends EntityBase{
+
 }
