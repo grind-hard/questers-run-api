@@ -29,7 +29,7 @@ export interface Character {
   /** The stats identifier associated with the character. */
   statsId: string
   /** The points associated to the character such as health, mana, stamina, etc... */
-  points: Points
+  points: Points[]
   titleId?: string
 }
 
@@ -40,8 +40,4 @@ export interface Gender extends EntityBase {
 export interface Equipment extends EntityBase {
   armorIds: string[]
   weaponIds: string[]
-}
-
-export interface Title extends EntityBase {
-
 }
