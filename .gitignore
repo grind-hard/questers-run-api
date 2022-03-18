@@ -4,3 +4,5 @@ dist
 .nyc_output
 coverage
 function.json
+/.vs/ProjectSettings.json
+/.vs/slnx.sqlite
