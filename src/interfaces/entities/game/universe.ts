@@ -6,8 +6,8 @@ import { EntityBase } from '../entities.base'
  * A Universe can have many Worlds.
  */
 export interface Universe extends EntityBase {
-	/** The child world ids associated with the Universe. */
-	worldIds: string[]
-	/** Related Universes to this one. */
-	siblingUniverseIds: string[]
+  /** The child world ids associated with the Universe. */
+  worldIds: string[]
+  /** Related Universes to this one. */
+  siblingUniverseIds: string[]
 }

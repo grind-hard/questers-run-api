@@ -5,7 +5,7 @@ import { Stats } from './stats'
 export interface Effects extends EntityBase {
   id: string
   description: string
-  self?: Points 
+  self?: Points
   target?: Points
   stats?: Stats
   chance: number
