@@ -1,5 +1,5 @@
 export interface Points {
-    hp: number
-    mana: number
-    stamina: number
+  hp: number
+  mana: number
+  stamina: number
 }
