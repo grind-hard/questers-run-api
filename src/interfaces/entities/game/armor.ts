@@ -12,7 +12,7 @@ export interface Armor extends EntityBase {
   durability: number
   /** The character level requirement to equip the armor. */
   levelRequirement: number
-  /** The price of the armor when selling to a vendor. */
+  /** The base price of the armor. */
   price: number
   /** The armor's type. */
   type: ArmorTypeClassification
