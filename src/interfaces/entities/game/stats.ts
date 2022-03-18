@@ -10,6 +10,4 @@ export interface Stats extends EntityBase {
   wisdom?: number
   tenacity?: number
   determination?: number
-
-  [propertyName: string]: any
 }

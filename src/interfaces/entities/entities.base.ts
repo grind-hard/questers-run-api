@@ -8,4 +8,6 @@ export interface EntityBase {
   title: string
   /** The description of the entity. */
   description: string
+  /** The image of the entity. */
+  imageUrl?: string
 }

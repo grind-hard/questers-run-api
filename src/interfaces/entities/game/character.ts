@@ -37,6 +37,9 @@ export interface Gender extends EntityBase {
 
 }
 
+/**
+ * Equipment stores armor and weapons ids so that characters can be quickly equipped.
+ */
 export interface Equipment extends EntityBase {
   armorIds: string[]
   weaponIds: string[]
