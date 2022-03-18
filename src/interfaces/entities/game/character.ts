@@ -1,4 +1,4 @@
-import { EntityBase } from './entites.base'
+import { EntityBase } from '../entites.base'
 import { Points } from './points'
 
 export interface Character {

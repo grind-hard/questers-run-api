@@ -1,5 +1,8 @@
-import { EntityBase } from './entites.base'
+import { EntityBase } from '../entites.base'
 
+/**
+ * Armor is meant for Characters, NPCs, Mobs, and Bosses.
+ */
 export interface Armor extends EntityBase {
   value: number
   durability: number
