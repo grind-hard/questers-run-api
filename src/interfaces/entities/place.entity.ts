@@ -9,7 +9,7 @@ export interface Place {
   title: string
   description: string
 	zoneId: string
-	location: Location 
+	location: Location
 
 }
 
@@ -20,5 +20,5 @@ export interface City extends Place {
 }
 
 export interface Cave extends Place {
-
+	size: number
 }
