@@ -11,11 +11,34 @@ paths: {}
 components:
   schemas:
     QuestLine:
+      properties:
+        id:
+          title: QuestLine.id
+          type: string
+        title:
+          title: QuestLine.title
+          type: string
+        description:
+          title: QuestLine.description
+          type: string
+      required:
+        - id
+        - title
+        - description
       additionalProperties: false
       title: QuestLine
       type: object
     Quest:
       properties:
+        id:
+          title: Quest.id
+          type: string
+        title:
+          title: Quest.title
+          type: string
+        description:
+          title: Quest.description
+          type: string
         questLineId:
           title: Quest.questLineId
           type: string
@@ -26,6 +49,9 @@ components:
           title: Quest.questStepIds
           type: array
       required:
+        - id
+        - title
+        - description
         - questLineId
         - questStepIds
       additionalProperties: false
@@ -33,10 +59,22 @@ components:
       type: object
     QuestStep:
       properties:
+        id:
+          title: QuestStep.id
+          type: string
+        title:
+          title: QuestStep.title
+          type: string
+        description:
+          title: QuestStep.description
+          type: string
         questId:
           title: QuestStep.questId
           type: string
       required:
+        - id
+        - title
+        - description
         - questId
       additionalProperties: false
       title: QuestStep

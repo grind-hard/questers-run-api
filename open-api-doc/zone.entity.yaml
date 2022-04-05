@@ -12,14 +12,26 @@ components:
   schemas:
     Zone:
       properties:
+        id:
+          title: Zone.id
+          type: string
         worldId:
           title: Zone.worldId
+          type: string
+        title:
+          title: Zone.title
+          type: string
+        description:
+          title: Zone.description
           type: string
         environment:
           $ref: '#/components/schemas/ZoneEnvironments'
           title: Zone.environment
       required:
+        - id
         - worldId
+        - title
+        - description
         - environment
       additionalProperties: false
       title: Zone

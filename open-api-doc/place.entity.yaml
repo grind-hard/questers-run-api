@@ -30,6 +30,15 @@ components:
       type: object
     Place:
       properties:
+        id:
+          title: Place.id
+          type: string
+        title:
+          title: Place.title
+          type: string
+        description:
+          title: Place.description
+          type: string
         zoneId:
           title: Place.zoneId
           type: string
@@ -37,6 +46,9 @@ components:
           $ref: '#/components/schemas/Location'
           title: Place.location
       required:
+        - id
+        - title
+        - description
         - zoneId
         - location
       additionalProperties: false

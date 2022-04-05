@@ -11,6 +11,20 @@ paths: {}
 components:
   schemas:
     Item:
+      properties:
+        id:
+          title: Item.id
+          type: string
+        title:
+          title: Item.title
+          type: string
+        description:
+          title: Item.description
+          type: string
+      required:
+        - id
+        - title
+        - description
       additionalProperties: false
       title: Item
       type: object

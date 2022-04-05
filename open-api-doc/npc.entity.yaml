@@ -12,6 +12,15 @@ components:
   schemas:
     NPC:
       properties:
+        id:
+          title: NPC.id
+          type: string
+        title:
+          title: NPC.title
+          type: string
+        description:
+          title: NPC.description
+          type: string
         greeting:
           title: NPC.greeting
           type: string
@@ -19,6 +28,9 @@ components:
           title: NPC.questLineIds
           type: string
       required:
+        - id
+        - title
+        - description
         - greeting
         - questLineIds
       additionalProperties: false
