@@ -1,0 +1,36 @@
+openapi: 3.0.0
+info:
+  title: Converted from npc.entity.yaml with typeconv
+  version: '1'
+  x-id: npc.entity.yaml
+  x-comment: >-
+    Generated from src\interfaces\entities\npc.entity.ts by
+    core-types-json-schema (https://github.com/grantila/core-types-json-schema)
+    on behalf of typeconv (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    NPC:
+      properties:
+        greeting:
+          title: NPC.greeting
+          type: string
+        questLineIds:
+          title: NPC.questLineIds
+          type: string
+      required:
+        - greeting
+        - questLineIds
+      additionalProperties: false
+      title: NPC
+      type: object
+    Blacksmith:
+      properties:
+        canRepair:
+          title: Blacksmith.canRepair
+          type: boolean
+      required:
+        - canRepair
+      additionalProperties: false
+      title: Blacksmith
+      type: object

@@ -1,0 +1,80 @@
+openapi: '3.0.3'
+info:
+  title: Quester's Run
+  version: '1.0'
+servers:
+  - url: https://api.server.test/v1
+paths:
+  /worlds:
+    get:
+      tags:
+        - Worlds
+      summary: Get Worlds
+      description: Get all worlds, or worlds by query parameters.
+      parameters:
+        - name: authentication
+          required: true
+          description: Bearer token.
+          in: header
+          schema:
+            type: string
+        - name: id
+          required: false
+          description: The id of the world.
+          in: query
+          schema:
+            type: string
+        - name: title
+          required: false
+          description: The title of the world.
+          in: query
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: 'world.entity.yaml#/components/schemas/World'
+        '400': 
+          description: Invalid request.
+    post:
+      tags:
+        - Worlds
+      summary: Create/Update Worlds
+      description: Create, or update, worlds.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: 'world.entity.yaml#/components/schemas/Worlds'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: 'world.entity.yaml#/components/schemas/Worlds'
+        '400':
+          description: Invalid request.
+    delete:
+      tags:
+        - Worlds
+      summary: Delete Worlds
+      description: Delete worlds by an array of their ids.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+              example: ['12345','678910']
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Invalid request.
+              

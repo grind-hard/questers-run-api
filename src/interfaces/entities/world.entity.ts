@@ -1,8 +1,11 @@
 import { BaseEntity } from './entities.base'
 
-/**
- * Give a name to your world!
- */
-export interface World extends BaseEntity {
-	
+export interface World {
+	id?: string
+	title: string
+	description: string
+}
+
+export interface Worlds {
+	worlds: World[]
 }

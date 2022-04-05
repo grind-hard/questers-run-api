@@ -1,0 +1,38 @@
+openapi: 3.0.0
+info:
+  title: Converted from entities.base.yaml with typeconv
+  version: '1'
+  x-id: entities.base.yaml
+  x-comment: >-
+    Generated from src\interfaces\entities\entities.base.ts by
+    core-types-json-schema (https://github.com/grantila/core-types-json-schema)
+    on behalf of typeconv (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    BaseEntity:
+      properties:
+        id:
+          title: BaseEntity.id
+          type: string
+        title:
+          title: BaseEntity.title
+          type: string
+        description:
+          title: BaseEntity.description
+          type: string
+        storageUrl:
+          title: BaseEntity.storageUrl
+          type: string
+        imageUrl:
+          title: BaseEntity.imageUrl
+          type: string
+      required:
+        - id
+        - title
+        - description
+        - storageUrl
+      additionalProperties: false
+      title: BaseEntity
+      description: EntityBase contains the common properties of all other entities.
+      type: object

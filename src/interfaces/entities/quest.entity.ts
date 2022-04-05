@@ -1,7 +1,6 @@
 import { BaseEntity } from './entities.base'
 
 export interface QuestLine extends BaseEntity {
-	questIds: string[]
 
 }
 
@@ -13,5 +12,5 @@ export interface Quest extends BaseEntity {
 
 export interface QuestStep extends BaseEntity {
 	questId: string
-	
+
 }

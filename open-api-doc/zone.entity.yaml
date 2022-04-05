@@ -1,0 +1,34 @@
+openapi: 3.0.0
+info:
+  title: Converted from zone.entity.yaml with typeconv
+  version: '1'
+  x-id: zone.entity.yaml
+  x-comment: >-
+    Generated from src\interfaces\entities\zone.entity.ts by
+    core-types-json-schema (https://github.com/grantila/core-types-json-schema)
+    on behalf of typeconv (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    Zone:
+      properties:
+        worldId:
+          title: Zone.worldId
+          type: string
+        environment:
+          $ref: '#/components/schemas/ZoneEnvironments'
+          title: Zone.environment
+      required:
+        - worldId
+        - environment
+      additionalProperties: false
+      title: Zone
+      type: object
+    ZoneEnvironments:
+      enum:
+        - desert
+        - forest
+        - mountains
+        - tundra
+      title: ZoneEnvironments
+      type: string

@@ -1,7 +1,7 @@
 export interface BaseApiService<T> {
-	doGet(queryParams: T): Promise<T[]>
-	doPatch(objects: T[]): Promise<T[]>
-	doPut(objects: T[]): Promise<T[]>
-	doPost(objects: T[]): Promise<T[]>
-	doDelete(objectIds: string[]): Promise<string[]>
+	doGet(queryParams?: T): Promise<T[]>
+	doPatch(entities: T[]): Promise<T[]>
+	doPut(entities: T[]): Promise<T[]>
+	doPost(entities: T[]): Promise<T[]>
+	doDelete(entityIds: string[]): Promise<string[]>
 }

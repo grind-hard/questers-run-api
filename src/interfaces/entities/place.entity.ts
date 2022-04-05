@@ -8,18 +8,16 @@ export interface Location {
 
 export interface Place extends BaseEntity {
 	zoneId: string
+	location: Location 
+
 }
 
-export interface City {
-	zoneId: string
-	location: Location 
+export interface City extends Place {
 	hasBlacksmith: boolean
 	hasShop: boolean
 
 }
 
-export interface Cave {
-	zoneId: string
-	location: Location
+export interface Cave extends Place {
 
 }
