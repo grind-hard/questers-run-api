@@ -1,17 +1,17 @@
-import { World } from '../interfaces/entities/world.entity'
+import { Quest } from '../interfaces/entities/quest.entity'
 import { BaseApiService } from './service.base'
 
-export class WorldService implements BaseApiService<World> {
-	doGet(queryParams?: World): Promise<World[]> {
+export class QuestService implements BaseApiService<Quest> {
+	doGet(queryParams?: Quest): Promise<Quest[]> {
 		throw new Error('Method not implemented.')
 	}
-	doPatch(entities: World[]): Promise<World[]> {
+	doPatch(entities: Quest[]): Promise<Quest[]> {
 		throw new Error('Method not implemented.')
 	}
-	doPut(entities: World[]): Promise<World[]> {
+	doPut(entities: Quest[]): Promise<Quest[]> {
 		throw new Error('Method not implemented.')
 	}
-	doPost(entities: World[]): Promise<World[]> {
+	doPost(entities: Quest[]): Promise<Quest[]> {
 		throw new Error('Method not implemented.')
 	}
 	doDelete(entityIds: string[]): Promise<string[]> {

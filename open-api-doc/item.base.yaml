@@ -1,0 +1,34 @@
+openapi: 3.0.0
+info:
+  title: Converted from item.base.yaml with typeconv
+  version: '1'
+  x-id: item.base.yaml
+  x-comment: >-
+    Generated from src\interfaces\entities\item.base.ts by
+    core-types-json-schema (https://github.com/grantila/core-types-json-schema)
+    on behalf of typeconv (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    Item:
+      properties:
+        id:
+          title: Item.id
+          type: string
+        title:
+          title: Item.title
+          type: string
+        description:
+          title: Item.description
+          type: string
+      required:
+        - id
+        - title
+        - description
+      additionalProperties: false
+      title: Item
+      type: object
+    Consumable:
+      additionalProperties: false
+      title: Consumable
+      type: object

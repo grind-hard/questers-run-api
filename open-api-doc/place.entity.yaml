@@ -1,0 +1,74 @@
+openapi: 3.0.0
+info:
+  title: Converted from place.entity.yaml with typeconv
+  version: '1'
+  x-id: place.entity.yaml
+  x-comment: >-
+    Generated from src\interfaces\entities\place.entity.ts by
+    core-types-json-schema (https://github.com/grantila/core-types-json-schema)
+    on behalf of typeconv (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    Location:
+      properties:
+        x:
+          title: Location.x
+          type: number
+        'y':
+          title: Location.y
+          type: number
+        z:
+          title: Location.z
+          type: number
+      required:
+        - x
+        - 'y'
+        - z
+      additionalProperties: false
+      title: Location
+      type: object
+    Place:
+      properties:
+        id:
+          title: Place.id
+          type: string
+        title:
+          title: Place.title
+          type: string
+        description:
+          title: Place.description
+          type: string
+        zoneId:
+          title: Place.zoneId
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+          title: Place.location
+      required:
+        - id
+        - title
+        - description
+        - zoneId
+        - location
+      additionalProperties: false
+      title: Place
+      type: object
+    City:
+      properties:
+        hasBlacksmith:
+          title: City.hasBlacksmith
+          type: boolean
+        hasShop:
+          title: City.hasShop
+          type: boolean
+      required:
+        - hasBlacksmith
+        - hasShop
+      additionalProperties: false
+      title: City
+      type: object
+    Cave:
+      additionalProperties: false
+      title: Cave
+      type: object

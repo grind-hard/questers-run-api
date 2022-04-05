@@ -1,0 +1,81 @@
+openapi: 3.0.0
+info:
+  title: Converted from quest.entity.yaml with typeconv
+  version: '1'
+  x-id: quest.entity.yaml
+  x-comment: >-
+    Generated from src\interfaces\entities\quest.entity.ts by
+    core-types-json-schema (https://github.com/grantila/core-types-json-schema)
+    on behalf of typeconv (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    QuestLine:
+      properties:
+        id:
+          title: QuestLine.id
+          type: string
+        title:
+          title: QuestLine.title
+          type: string
+        description:
+          title: QuestLine.description
+          type: string
+      required:
+        - id
+        - title
+        - description
+      additionalProperties: false
+      title: QuestLine
+      type: object
+    Quest:
+      properties:
+        id:
+          title: Quest.id
+          type: string
+        title:
+          title: Quest.title
+          type: string
+        description:
+          title: Quest.description
+          type: string
+        questLineId:
+          title: Quest.questLineId
+          type: string
+        questStepIds:
+          items:
+            title: Quest.questStepIds.[]
+            type: string
+          title: Quest.questStepIds
+          type: array
+      required:
+        - id
+        - title
+        - description
+        - questLineId
+        - questStepIds
+      additionalProperties: false
+      title: Quest
+      type: object
+    QuestStep:
+      properties:
+        id:
+          title: QuestStep.id
+          type: string
+        title:
+          title: QuestStep.title
+          type: string
+        description:
+          title: QuestStep.description
+          type: string
+        questId:
+          title: QuestStep.questId
+          type: string
+      required:
+        - id
+        - title
+        - description
+        - questId
+      additionalProperties: false
+      title: QuestStep
+      type: object
