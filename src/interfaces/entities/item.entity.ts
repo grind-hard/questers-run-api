@@ -1,9 +1,5 @@
-export interface Item {
+export interface Consumable {
 	id: string
   title: string
   description: string
-}
-
-export interface Consumable extends Item {
-
 }

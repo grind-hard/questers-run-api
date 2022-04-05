@@ -1,13 +1,10 @@
-export interface NPC {
+export interface Blacksmith {
 	id: string
   title: string
   description: string
 	greeting: string
-	questLineIds: string
-	
-}
-
-export interface Blacksmith extends NPC {
+	questLineIds: string[]
 	canRepair: boolean
+	canTrain: boolean
 
 }

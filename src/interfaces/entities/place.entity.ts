@@ -3,22 +3,23 @@ export interface Location {
 	y: number
 	z: number
 }
-
-export interface Place {
+export interface City {
 	id: string
+	zoneId: string
   title: string
   description: string
-	zoneId: string
 	location: Location
-
-}
-
-export interface City extends Place {
 	hasBlacksmith: boolean
 	hasShop: boolean
 
 }
 
-export interface Cave extends Place {
-	size: number
+export interface Cave {
+	id: string
+	zoneId: string
+  title: string
+  description: string
+	location: Location
+	hasLoot: boolean
+
 }
