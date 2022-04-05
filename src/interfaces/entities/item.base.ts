@@ -1,7 +1,7 @@
-import { BaseEntity } from './entities.base'
-
-export interface Item extends BaseEntity {
-
+export interface Item {
+	id: string
+  title: string
+  description: string
 }
 
 export interface Consumable extends Item {

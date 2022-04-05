@@ -1,7 +1,8 @@
-import { BaseEntity } from './entities.base'
-
-export interface Zone extends BaseEntity {
+export interface Zone {
+	id: string
 	worldId: string
+  title: string
+  description: string
 	environment: ZoneEnvironments 
 }
 

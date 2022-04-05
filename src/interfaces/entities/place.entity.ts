@@ -1,12 +1,13 @@
-import { BaseEntity } from './entities.base'
-
 export interface Location {
 	x: number
 	y: number
 	z: number
 }
 
-export interface Place extends BaseEntity {
+export interface Place {
+	id: string
+  title: string
+  description: string
 	zoneId: string
 	location: Location 
 

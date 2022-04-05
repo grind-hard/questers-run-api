@@ -1,16 +1,22 @@
-import { BaseEntity } from './entities.base'
-
-export interface QuestLine extends BaseEntity {
-
+export interface QuestLine {
+	id: string
+  title: string
+  description: string
 }
 
-export interface Quest extends BaseEntity {
+export interface Quest {
+	id: string
+  title: string
+  description: string
 	questLineId: string
 	questStepIds: string[]
 
 }
 
-export interface QuestStep extends BaseEntity {
+export interface QuestStep {
+	id: string
+  title: string
+  description: string
 	questId: string
 
 }

@@ -1,6 +1,7 @@
-import { BaseEntity } from './entities.base'
-
-export interface NPC extends BaseEntity {
+export interface NPC {
+	id: string
+  title: string
+  description: string
 	greeting: string
 	questLineIds: string
 	

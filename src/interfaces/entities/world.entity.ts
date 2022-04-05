@@ -1,7 +1,5 @@
-import { BaseEntity } from './entities.base'
-
 export interface World {
-	id?: string
+	id: string
 	title: string
 	description: string
 }
