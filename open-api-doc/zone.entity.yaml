@@ -44,3 +44,16 @@ components:
         - tundra
       title: ZoneEnvironments
       type: string
+    Zones:
+      properties:
+        zones:
+          items:
+            $ref: '#/components/schemas/Zone'
+            title: Zones.zones.[]
+          title: Zones.zones
+          type: array
+      required:
+        - zones
+      additionalProperties: false
+      title: Zones
+      type: object

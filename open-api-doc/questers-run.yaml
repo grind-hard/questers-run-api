@@ -77,4 +77,76 @@ paths:
           description: OK
         '400':
           description: Invalid request.
-              
+  /zones:
+    get:
+      tags:
+        - Zones
+      summary: Get Zones
+      description: Get all zones, or zones by query parameters.
+      parameters:
+        - name: authentication
+          required: true
+          description: Bearer token.
+          in: header
+          schema:
+            type: string
+        - name: id
+          required: false
+          description: The id of the zone.
+          in: query
+          schema:
+            type: string
+        - name: title
+          required: false
+          description: The title of the zone.
+          in: query
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: 'zone.entity.yaml#/components/schemas/Zone'
+        '400': 
+          description: Invalid request.
+    post:
+      tags:
+        - Zones
+      summary: Create/Update Zones
+      description: Create, or update, zones.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: 'zone.entity.yaml#/components/schemas/Zone'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: 'zone.entity.yaml#/components/schemas/Zone'
+        '400':
+          description: Invalid request.
+    delete:
+      tags:
+        - Zones
+      summary: Delete Zones
+      description: Delete zones by an array of their ids.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+              example: ['12345','678910']
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Invalid request.
+                            

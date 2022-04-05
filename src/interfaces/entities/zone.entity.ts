@@ -7,3 +7,7 @@ export interface Zone {
 }
 
 export type ZoneEnvironments = 'desert' | 'forest' | 'mountains' | 'tundra'
+
+export interface Zones {
+	zones: Zone[]
+}
