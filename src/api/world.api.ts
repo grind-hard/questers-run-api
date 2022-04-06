@@ -5,7 +5,7 @@ import { WorldService } from '../services/world.service'
 const world: AzureFunction = async function world (
 	context: Context,
 	request: HttpRequest
-): Promise<{response: {statusCode: number, body: any}> {
+): Promise<{response: {statusCode: number, body: any}}> {
 	const worldService = new WorldService()
 
 	let result: any
