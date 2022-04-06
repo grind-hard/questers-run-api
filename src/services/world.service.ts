@@ -3,7 +3,11 @@ import { BaseApiService } from './service.base'
 
 export class WorldService implements BaseApiService<World> {
   async doGet (queryParams?: World): Promise<World[]> {
-    throw new Error('Method not implemented.')
+    return [{
+      id: 'hello-world!',
+      description: 'im new here',
+      title: 'you come here often?'
+    }]
   }
 
   async doPatch (entities: World[]): Promise<World[]> {
