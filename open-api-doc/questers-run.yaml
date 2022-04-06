@@ -149,4 +149,152 @@ paths:
           description: OK
         '400':
           description: Invalid request.
-                            
+  /class:
+    get:
+      tags:
+        - Classes
+      summary: Get Classes
+      description: Get all classes, or classes by query parameters.
+      parameters:
+        - name: authentication
+          required: true
+          description: Bearer token.
+          in: header
+          schema:
+            type: string
+        - name: id
+          required: false
+          description: The id of the class.
+          in: query
+          schema:
+            type: string
+        - name: title
+          required: false
+          description: The title of the class.
+          in: query
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: 'class.entity.yaml#/components/schemas/Class'
+        '400': 
+          description: Invalid request.
+    post:
+      tags:
+        - Classes
+      summary: Create/Update Classes
+      description: Create, or update, classes.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                  $ref: 'class.entity.yaml#/components/schemas/Class'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: 'class.entity.yaml#/components/schemas/Class'
+        '400':
+          description: Invalid request.
+    delete:
+      tags:
+        - Classes
+      summary: Delete Classes
+      description: Delete classes by an array of their ids.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+              example: ['12345','678910']
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Invalid request.
+  /character:
+    get:
+      tags:
+        - Characters
+      summary: Get Characters
+      description: Get all characters, or characters by query parameters.
+      parameters:
+        - name: authentication
+          required: true
+          description: Bearer token.
+          in: header
+          schema:
+            type: string
+        - name: id
+          required: false
+          description: The id of the characters.
+          in: query
+          schema:
+            type: string
+        - name: title
+          required: false
+          description: The title of the characters.
+          in: query
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: 'character.entity.yaml#/components/schemas/Character'
+        '400': 
+          description: Invalid request.
+    post:
+      tags:
+        - Characters
+      summary: Create/Update Characters
+      description: Create, or update, characters.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                  $ref: 'character.entity.yaml#/components/schemas/Character'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: 'character.entity.yaml#/components/schemas/Character'
+        '400':
+          description: Invalid request.
+    delete:
+      tags:
+        - Characters
+      summary: Delete Characters
+      description: Delete characters by an array of their ids.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+              example: ['12345','678910']
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Invalid request.          
+                                                        
