@@ -28,34 +28,23 @@ components:
       additionalProperties: false
       title: Location
       type: object
-    Place:
+    City:
       properties:
         id:
-          title: Place.id
-          type: string
-        title:
-          title: Place.title
-          type: string
-        description:
-          title: Place.description
+          title: City.id
           type: string
         zoneId:
-          title: Place.zoneId
+          title: City.zoneId
+          type: string
+        title:
+          title: City.title
+          type: string
+        description:
+          title: City.description
           type: string
         location:
           $ref: '#/components/schemas/Location'
-          title: Place.location
-      required:
-        - id
-        - title
-        - description
-        - zoneId
-        - location
-      additionalProperties: false
-      title: Place
-      type: object
-    City:
-      properties:
+          title: City.location
         hasBlacksmith:
           title: City.hasBlacksmith
           type: boolean
@@ -63,12 +52,43 @@ components:
           title: City.hasShop
           type: boolean
       required:
+        - id
+        - zoneId
+        - title
+        - description
+        - location
         - hasBlacksmith
         - hasShop
       additionalProperties: false
       title: City
       type: object
     Cave:
+      properties:
+        id:
+          title: Cave.id
+          type: string
+        zoneId:
+          title: Cave.zoneId
+          type: string
+        title:
+          title: Cave.title
+          type: string
+        description:
+          title: Cave.description
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+          title: Cave.location
+        hasLoot:
+          title: Cave.hasLoot
+          type: boolean
+      required:
+        - id
+        - zoneId
+        - title
+        - description
+        - location
+        - hasLoot
       additionalProperties: false
       title: Cave
       type: object

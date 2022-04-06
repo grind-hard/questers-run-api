@@ -24,25 +24,48 @@ components:
         greeting:
           title: NPC.greeting
           type: string
-        questLineIds:
-          title: NPC.questLineIds
+        npcTypeId:
+          title: NPC.npcTypeId
           type: string
+        questLineIds:
+          items:
+            title: NPC.questLineIds.[]
+            type: string
+          title: NPC.questLineIds
+          type: array
+        canRepair:
+          title: NPC.canRepair
+          type: boolean
+        canTrain:
+          title: NPC.canTrain
+          type: boolean
       required:
         - id
         - title
         - description
         - greeting
+        - npcTypeId
         - questLineIds
+        - canRepair
+        - canTrain
       additionalProperties: false
       title: NPC
       type: object
-    Blacksmith:
+    NPCType:
       properties:
-        canRepair:
-          title: Blacksmith.canRepair
-          type: boolean
+        id:
+          title: NPCType.id
+          type: string
+        title:
+          title: NPCType.title
+          type: string
+        description:
+          title: NPCType.description
+          type: string
       required:
-        - canRepair
+        - id
+        - title
+        - description
       additionalProperties: false
-      title: Blacksmith
+      title: NPCType
       type: object
