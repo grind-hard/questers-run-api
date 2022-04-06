@@ -1,20 +1,20 @@
-import { Quest } from '../interfaces/entities/quest.entity'
+import { Class } from '../interfaces/entities/class.entity'
 import { BaseApiService } from './service.base'
 
-export class QuestService implements BaseApiService<Quest> {
-  async doGet (queryParams?: Quest): Promise<Quest[]> {
+export class ClassService implements BaseApiService<Class> {
+  async doGet (queryParams?: Class): Promise<Class[]> {
     throw new Error('Method not implemented.')
   }
 
-  async doPatch (entities: Quest[]): Promise<Quest[]> {
+  async doPatch (entities: Class[]): Promise<Class[]> {
     throw new Error('Method not implemented.')
   }
 
-  async doPut (entities: Quest[]): Promise<Quest[]> {
+  async doPut (entities: Class[]): Promise<Class[]> {
     throw new Error('Method not implemented.')
   }
 
-  async doPost (entities: Quest[]): Promise<Quest[]> {
+  async doPost (entities: Class[]): Promise<Class[]> {
     throw new Error('Method not implemented.')
   }
 

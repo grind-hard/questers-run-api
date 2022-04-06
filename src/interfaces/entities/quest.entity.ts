@@ -1,22 +1,22 @@
 export interface QuestLine {
-	id: string
+  id: string
   title: string
   description: string
 }
 
 export interface Quest {
-	id: string
+  id: string
   title: string
   description: string
-	questLineId: string
-	questStepIds: string[]
+  questLineId: string
+  questStepIds: string[]
 
 }
 
 export interface QuestStep {
-	id: string
+  id: string
   title: string
   description: string
-	questId: string
+  questId: string
 
 }

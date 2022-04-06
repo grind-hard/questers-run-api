@@ -1,13 +1,13 @@
 export interface Zone {
-	id: string
-	worldId: string
+  id: string
+  worldId: string
   title: string
   description: string
-	environment: ZoneEnvironments 
+  environment: ZoneEnvironments
 }
 
 export type ZoneEnvironments = 'desert' | 'forest' | 'mountains' | 'tundra'
 
 export interface Zones {
-	zones: Zone[]
+  zones: Zone[]
 }
