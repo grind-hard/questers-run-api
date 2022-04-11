@@ -4,7 +4,9 @@
   "description": "Objectifying Story Content",
   "scripts": {
     "test": "gulp coverage",
-    "demo": "gulp tsc && node dist/src/demo/index.js"
+    "publish": "npm run deploy || npm run fallback",
+    "deploy": "gulp deleteDist && gulp compile && npm prune --production && func azure functionapp publish questers-run-api --typescript && npm i && gulp cleanUp",
+    "fallback": "npm i && gulp cleanUp"
   },
   "license": "MIT",
   "dependencies": {

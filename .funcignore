@@ -1,0 +1,17 @@
+*.js.map
+*.ts
+.git*
+.vscode
+local.settings.json
+test
+LICENSE
+tsconfig.eslint.json
+tsconfig.json
+src
+test
+open-api-doc
+gulpfile.ts
+.mocharc.json
+.nycrc.json
+.tsfuncrc.json
+README.md
