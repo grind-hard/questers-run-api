@@ -1,10 +1,10 @@
-import { azure, createPromiseTableService, PromiseTableService } from 'azure-table-promise'
+import { azure, PromiseTableService } from 'azure-table-promise'
 import { BlockBlobService, TableWriterBatch } from 'azure-utils'
 import { World } from './world.entity'
 import { isNotNullAndNotUndefined, isNullOrUndefined } from 'nhs-core-utils'
 import { Tables } from '../common/common.constants'
 import { WorldTableRow } from './world.data.interfaces'
-import { DeleteResponse, InvalidRequestResult } from '../common/common.interfaces'
+import { DeleteResponse } from '../common/common.interfaces'
 import { createHash } from 'crypto'
 
 export class WorldService {
@@ -17,7 +17,7 @@ export class WorldService {
     this.connection = connection
     this.blockBlobService = new BlockBlobService(connection)
     this.tableWriterBatch = new TableWriterBatch({connection})
-    this.tableService = createPromiseTableService(connection)
+    this.tableService = new PromiseTableService(connection)
   }
   
   async doGet (queryParams?: World): Promise<WorldTableRow[]> {
