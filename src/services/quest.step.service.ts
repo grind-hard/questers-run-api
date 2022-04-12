@@ -1,4 +1,4 @@
-import { QuestStep } from '../interfaces/entities/quest.entity';
+import { QuestStep } from '../entities/quest.entity';
 import { BaseApiService } from './service.base';
 
 export class QuestStepService implements BaseApiService<QuestStep> {

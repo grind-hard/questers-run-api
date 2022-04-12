@@ -1,2 +1,2 @@
 /** export * from ./src/{folder}/{binding file} */
-export * from './src/bindings/world.bindings'
+export * from './src/world/world.bindings'

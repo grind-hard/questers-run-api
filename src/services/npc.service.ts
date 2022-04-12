@@ -1,4 +1,4 @@
-import { NPC } from '../interfaces/entities/npc.entity'
+import { NPC } from '../entities/npc.entity'
 import { BaseApiService } from './service.base'
 
 export class NPCService implements BaseApiService<NPC> {

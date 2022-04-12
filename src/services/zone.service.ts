@@ -1,4 +1,4 @@
-import { Zone } from '../interfaces/entities/zone.entity'
+import { Zone } from '../entities/zone.entity'
 import { BaseApiService } from './service.base'
 
 export class ZoneService implements BaseApiService<Zone> {

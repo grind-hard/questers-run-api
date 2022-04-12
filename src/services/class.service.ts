@@ -1,4 +1,4 @@
-import { Class } from '../interfaces/entities/class.entity'
+import { Class } from '../entities/class.entity'
 import { BaseApiService } from './service.base'
 
 export class ClassService implements BaseApiService<Class> {
