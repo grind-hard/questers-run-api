@@ -1,4 +1,4 @@
-import { azure, PromiseTableService } from 'azure-table-promise'
+import { azure, createPromiseTableService, PromiseTableService } from 'azure-table-promise'
 import { BlockBlobService, TableWriterBatch } from 'azure-utils'
 import { World } from './world.entity'
 import { isNotNullAndNotUndefined, isNullOrUndefined } from 'nhs-core-utils'
@@ -17,7 +17,7 @@ export class WorldService {
     this.connection = connection
     this.blockBlobService = new BlockBlobService(connection)
     this.tableWriterBatch = new TableWriterBatch({connection})
-    this.tableService = new PromiseTableService(connection)
+    this.tableService = createPromiseTableService(connection)
   }
   
   async doGet (queryParams?: World): Promise<WorldTableRow[]> {
@@ -29,7 +29,7 @@ export class WorldService {
           query.where(`${propertyName} eq ?`, queryParams[propertyName])
           isFirstParameter = false
         } else {
-          query.and(`${propertyName} eq ? `, queryParams[propertyName])
+          query.and(`${propertyName} eq ?`, queryParams[propertyName])
         }
       }
     }
