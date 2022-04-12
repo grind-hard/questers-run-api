@@ -1,7 +1,7 @@
 import { AzureFunction, Context, HttpRequest } from '@azure/functions'
 import { WorldService } from './world.service'
 import { EnvVar } from '../common/common.constants'
-import { isNullOrUndefined } from 'nhs-core-utils'
+import { isNotNullAndNotUndefined, isNullOrUndefined } from 'nhs-core-utils'
 import { WorldTableRow } from './world.data.interfaces'
 
 const world: AzureFunction = async function world (
@@ -20,7 +20,7 @@ const world: AzureFunction = async function world (
 			break 
 	}
 
-	if(isNullOrUndefined(result) || isNullOrUndefined(result.errors)){
+	if(isNullOrUndefined(result) || isNotNullAndNotUndefined(result.errors)){
 		return {
 			response: {
 				statusCode: 400,
