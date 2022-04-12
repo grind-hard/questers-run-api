@@ -16,5 +16,5 @@ export const world: AzureFunctionSchema = {
 			type: 'http'
 		}
 	],
-	scriptFile: '../dist/src/api/world.api.js'
+	scriptFile: '../dist/src/world/world.api.js'
 }
