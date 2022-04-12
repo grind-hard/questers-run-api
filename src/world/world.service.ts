@@ -14,6 +14,7 @@ export class WorldService {
   private tableWriterBatch: TableWriterBatch
 
   constructor(connection: string){
+    this.connection = connection
     this.blockBlobService = new BlockBlobService(connection)
     this.tableWriterBatch = new TableWriterBatch({connection})
     this.tableService = new PromiseTableService(connection)
@@ -33,18 +34,7 @@ export class WorldService {
       }
     }
 
-    let queryResult: any
-    try {
-      queryResult = await this.tableService.queryEntitiesAll<WorldTableRow>(Tables.World, query, {resolveEntity: true})
-    } catch(error){
-      return {
-        errors: [{
-          message: 'WorldService.doGet - Failed to PromiseTableService.queryEntitiesAll.',
-          error
-        }]
-      }
-    }
-
+    const queryResult = await this.tableService.queryEntitiesAll<WorldTableRow>(Tables.World, query, {resolveEntity: true})
     return queryResult.entries
   }
 
@@ -68,17 +58,7 @@ export class WorldService {
       tableName: Tables.World,
       tableRows: worldTableRows
     })
-
-    try {
-      await this.tableWriterBatch.executeBatches()
-    } catch(error){
-      return {
-        errors: [{
-          message: 'WorldService.doPost - Failed to TableWriterBatch.executeBatches.',
-          error
-        }]
-      }
-    }
+    await this.tableWriterBatch.executeBatches()
 
     return worldTableRows
   }
@@ -97,19 +77,7 @@ export class WorldService {
       }
     }
 
-    let queryResult: any
-    
-    try {
-      queryResult = await this.tableService.queryEntitiesAll<WorldTableRow>(Tables.World, query, {resolveEntity: true})
-    } catch(error){
-      return {
-        errors: [{
-          message: 'WorldService.doDelete - Failed to PromiseTableService.queryEntitiesAll.',
-          error
-        }]
-      }
-    }
-
+    const queryResult = await this.tableService.queryEntitiesAll<WorldTableRow>(Tables.World, query, {resolveEntity: true})
     const worlds: WorldTableRow[] = queryResult.entries
 
     const missingIds: string[] = []
@@ -126,17 +94,7 @@ export class WorldService {
       tableRows: worlds,
       writeType: 'delete'
     })
-
-    try {
-      await this.tableWriterBatch.executeBatches()
-    } catch(error){
-      return {
-        errors: [{
-          message: 'WorldService.doDelete - Failed to TableWriterBatch.executeBatches.',
-          error
-        }]
-      }
-    }
+    await this.tableWriterBatch.executeBatches()
 
     return {
       missingIds
