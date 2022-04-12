@@ -20,7 +20,7 @@ export class WorldService {
     this.tableService = new PromiseTableService(connection)
   }
   
-  async doGet (queryParams?: World): Promise<WorldTableRow[] | InvalidRequestResult> {
+  async doGet (queryParams?: World): Promise<WorldTableRow[]> {
     const query = new azure.TableQuery().select()
     if(isNotNullAndNotUndefined(queryParams)){
       let isFirstParameter = true
@@ -38,7 +38,7 @@ export class WorldService {
     return queryResult.entries
   }
 
-  async doPost (worldTableRows: WorldTableRow[]): Promise<WorldTableRow[] | InvalidRequestResult> {
+  async doPost (worldTableRows: WorldTableRow[]): Promise<WorldTableRow[]> {
     if(isNullOrUndefined(worldTableRows) || worldTableRows.length === 0) return undefined
 
     for(const worldTableRow of worldTableRows){
@@ -63,7 +63,7 @@ export class WorldService {
     return worldTableRows
   }
 
-  async doDelete (entityIds: string[]): Promise<DeleteResponse | InvalidRequestResult> {
+  async doDelete (entityIds: string[]): Promise<DeleteResponse> {
     if(isNullOrUndefined(entityIds) || !Array.isArray(entityIds) || entityIds.length === 0) return undefined
 
     const query = new azure.TableQuery().select()
