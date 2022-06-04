@@ -1,39 +1,53 @@
-import { AzureFunction, Context, HttpRequest } from '@azure/functions'
-import { WorldService } from './world.service'
+import { BlockBlobClient } from '@azure/storage-blob'
 import { EnvVar } from '../common/common.constants'
-import { isNotNullAndNotUndefined, isNullOrUndefined } from 'nhs-core-utils'
-import { WorldTableRow } from './world.data.interfaces'
+import { BaseHttpResponse } from '../common/common.interfaces'
+import { WorldApiService } from './world.api.service'
+import { World } from './world.interfaces'
 
-const world: AzureFunction = async function world (
-	context: Context,
-	request: HttpRequest
-): Promise<{response: {statusCode: number, body: any}}> {
-	const worldService = new WorldService(process.env[EnvVar.DataStorageConnection])
+const world = async function(
+	context: any,
+	request: any
+){ 
+	const worldApiService = new WorldApiService()
 
-	let result: any
-	switch(request.method){
-		case 'GET': result = await worldService.doGet(request.query as unknown as WorldTableRow)
-			break
-		case 'POST': result = await worldService.doPost(request.body as unknown as WorldTableRow[])
-			break
-		case 'DELETE': result = await worldService.doDelete(request.body as unknown as string[])
-			break 
-	}
-
-	if(isNullOrUndefined(result) || isNotNullAndNotUndefined(result.errors)){
-		return {
-			response: {
-				statusCode: 400,
-				body: result ?? {errors: [{message: 'Invalid Request. Check body content and try again.'}]}
+	let response: any
+	let world: World
+	if(request.method === 'POST'){
+		const validatedWorld = worldApiService.validate(request.body)
+		if(!validatedWorld.valid){
+			return {
+				response: {
+					status: 400,
+					message: 'Invalid world.'
+				}
 			}
 		}
-	}
-
-	return {
-		response: {
-			statusCode: 200,
-			body: result
+		
+		const response: BaseHttpResponse = await worldApiService.post(validatedWorld.world)
+		return {
+			response:{ 
+				status: response.status,
+				body: response.body
+			}
 		}
+
+	} else if(request.method === 'GET'){
+		/** Get one or many worlds */
+		const validatedWorld = worldApiService.validate(request.body)
+		if(!validatedWorld.valid){
+			return {
+				response: {
+					status: 400,
+					message: 'Invalid world.'
+				}
+			}
+		}
+
+
+	}
+	
+	return {
+		response
 	}
 }
 

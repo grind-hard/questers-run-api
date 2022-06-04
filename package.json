@@ -1,21 +1,15 @@
 {
   "name": "questers-run",
   "version": "0.1.0",
-  "description": "Objectifying Story Content",
-  "scripts": {
-    "test": "gulp coverage",
-    "publish": "npm run deploy || npm run fallback",
-    "deploy": "gulp deleteDist && gulp compile && npm prune --production && func azure functionapp publish questers-run-api --typescript && npm i && gulp cleanUp",
-    "fallback": "npm i && gulp cleanUp"
-  },
+  "description": "Objectifying Everything",
+  "scripts": {},
   "license": "MIT",
   "dependencies": {
+    "@azure/storage-blob": "^12.10.0",
     "@types/luxon": "^1.27.1",
     "@types/uuid": "^8.3.1",
     "azure-table-promise": "^1.2.0",
-    "azure-utils": "^2.6.1",
     "luxon": "^2.0.1",
-    "nhs-core-utils": "^0.0.13-RELEASE",
     "request-it-client": "^1.4.1",
     "storage-table-document": "^1.5.0",
     "typescript-node": "^0.1.3",

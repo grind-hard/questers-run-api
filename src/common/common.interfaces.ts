@@ -1,12 +1,6 @@
-export interface InvalidRequestResult {
-	errors: Error[]
-}
+import { HttpResponse } from '@azure/core-http'
 
-export interface Error {
-	message: string
-	error: any
-}
-
-export interface DeleteResponse {
-	missingIds: string[]
+export interface BaseHttpResponse {
+	status: number
+	body: any
 }
